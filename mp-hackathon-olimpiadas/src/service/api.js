@@ -1,7 +1,33 @@
-export const fetchData = async () => {
-    const response = await fetch('https://apis.codante.io/olympic-games');
+const cache = new Map();
+const url = 'https://apis.codante.io/olympic-games/countries';
+
+
+const fetchData = async () => {
+    const response = await fetch(url);
     if (!response.ok) {
-        throw new ('Conexão com a API deu ruim ;(');
+        if (response.status === 429) {
+            throw new Error("Taxa de limites excedida (429). Por favor aguarde antes de fazer outra requisição");
+        }
+        throw new Error('Conexão com a API deu ruim ;(');
     }
-    return response.json();
-  };
+
+    const data = await response.json();
+    cache.set(url, data);
+    return data;
+};
+
+/**
+ * Função para buscar dados da API com cache
+ * @returns {Promise<Object>} - Resposta da API em formato JSON, do cache se disponível
+ */
+const fetchWithCache = async () => {
+    if (cache.has(url)) {
+        console.log("Retornando informação do cache");
+        return cache.get(url);
+    }
+
+    const data = await fetchData();
+    return data;
+};
+
+export { fetchWithCache };

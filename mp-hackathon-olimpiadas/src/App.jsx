@@ -1,13 +1,13 @@
 import './style/App.css'
 import ComponenteExemplo from './ComponenteExemplo'
-import ConsumoAPI from './ConsumoAPI'
+import CountryCards from './CountryCards'
 
 function App() {
   
   return (
     <>
       <ComponenteExemplo></ComponenteExemplo>
-      <ConsumoAPI></ConsumoAPI>
+      <CountryCards></CountryCards>
     </>
   )
 }
