@@ -1,12 +1,12 @@
 import './style/App.css'
-import ComponenteExemplo from './ComponenteExemplo'
+// import ComponenteExemplo from './ComponenteExemplo'
 import CountryCards from './CountryCards'
+
 
 function App() {
   
   return (
     <>
-      <ComponenteExemplo></ComponenteExemplo>
       <CountryCards></CountryCards>
     </>
   )

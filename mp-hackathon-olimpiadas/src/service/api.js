@@ -16,10 +16,6 @@ const fetchData = async () => {
     return data;
 };
 
-/**
- * Função para buscar dados da API com cache
- * @returns {Promise<Object>} - Resposta da API em formato JSON, do cache se disponível
- */
 const fetchWithCache = async () => {
     if (cache.has(url)) {
         console.log("Retornando informação do cache");
